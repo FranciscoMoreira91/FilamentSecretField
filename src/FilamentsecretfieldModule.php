@@ -2,6 +2,4 @@
 
 namespace fmfrlx\Filamentsecretfield;
 
-class FilamentsecretfieldModule
-{
-}
+class FilamentsecretfieldModule {}

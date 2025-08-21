@@ -2,20 +2,16 @@
 
 namespace fmfrlx\Filamentsecretfield;
 
-use Filament\Support\Assets\Js;
-use Filament\Support\Assets\Css;
 use Filament\Support\Assets\Asset;
-use Illuminate\Filesystem\Filesystem;
-use Spatie\LaravelPackageTools\Package;
-use Filament\Support\Facades\FilamentIcon;
 use Filament\Support\Facades\FilamentAsset;
-use Filament\Support\Assets\AlpineComponent;
-use Livewire\Features\SupportTesting\Testable;
-use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Spatie\LaravelPackageTools\Commands\InstallCommand;
-use fmfrlx\Filamentsecretfield\Testing\TestsFilamentsecretfieldModule;
+use Filament\Support\Facades\FilamentIcon;
 use fmfrlx\Filamentsecretfield\Commands\FilamentsecretfieldModuleCommand;
-use fmfrlx\Filamentsecretfield\Commands\FilamentsecretfieldModuleCommandInstall;
+use fmfrlx\Filamentsecretfield\Testing\TestsFilamentsecretfieldModule;
+use Illuminate\Filesystem\Filesystem;
+use Livewire\Features\SupportTesting\Testable;
+use Spatie\LaravelPackageTools\Commands\InstallCommand;
+use Spatie\LaravelPackageTools\Package;
+use Spatie\LaravelPackageTools\PackageServiceProvider;
 
 class FilamentsecretfieldModuleServiceProvider extends PackageServiceProvider
 {
@@ -44,16 +40,12 @@ class FilamentsecretfieldModuleServiceProvider extends PackageServiceProvider
             $package->hasConfigFile();
         }
 
-
         if (file_exists($package->basePath('/../resources/views'))) {
             $package->hasViews(static::$viewNamespace);
         }
     }
 
-    public function packageRegistered(): void
-    {
-
-    }
+    public function packageRegistered(): void {}
 
     public function packageBooted(): void
     {
@@ -80,9 +72,8 @@ class FilamentsecretfieldModuleServiceProvider extends PackageServiceProvider
             }
         }
 
-
         // Testing
-        Testable::mixin(new TestsFilamentsecretfieldModule());
+        Testable::mixin(new TestsFilamentsecretfieldModule);
     }
 
     protected function getAssetPackageName(): ?string
@@ -126,7 +117,7 @@ class FilamentsecretfieldModuleServiceProvider extends PackageServiceProvider
     protected function getCommands(): array
     {
         return [
-            //FilamentsecretfieldModuleCommand::class,
+            // FilamentsecretfieldModuleCommand::class,
         ];
     }
 

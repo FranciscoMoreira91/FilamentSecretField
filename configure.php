@@ -12,12 +12,12 @@ if ($usernameGuess !== '') {
     $usernameGuess = dirname($usernameGuess);
     $usernameGuess = basename($usernameGuess);
 }
-$authorUsername = $authorName; //ask('Author username', $usernameGuess);
+$authorUsername = $authorName; // ask('Author username', $usernameGuess);
 
-$vendorName = "Norlogic"; //ask('Vendor name', $authorUsername);
+$vendorName = 'Norlogic'; // ask('Vendor name', $authorUsername);
 $vendorSlug = slugify($vendorName);
 $vendorNamespace = str_replace('-', '', ucwords($vendorName));
-//$vendorNamespace = ask('Vendor namespace', $vendorNamespace);
+// $vendorNamespace = ask('Vendor namespace', $vendorNamespace);
 
 $currentDirectory = getcwd();
 $folderName = basename($currentDirectory);
@@ -34,9 +34,9 @@ $packageSlugWithoutPrefix = removePrefix('filament-', $packageSlug);
 $className = titleCase(ucfirst($packageName) . 'Module');
 $classNameSpace = 'Nlmn' . $className;
 $packageName = 'Nlmn' . ucfirst($packageName) . 'Module';
-//$className = ask('Class name', $className);
+// $className = ask('Class name', $className);
 $FilamentsecretfieldModuleName = ucfirst($className);
-$description = "This is my package $packageSlug for Norlogic Metanoia!"; //ask('Package description', "This is my package $packageSlug for Norlogic Metanoia!");
+$description = "This is my package $packageSlug for Norlogic Metanoia!"; // ask('Package description', "This is my package $packageSlug for Norlogic Metanoia!");
 
 /* $usePhpStan = confirm('Enable PhpStan?', true);
 $usePint = confirm('Enable Pint?', true);
@@ -48,11 +48,11 @@ $usePhpStan = false;
 $usePint = false;
 $useDependabot = false;
 $useLaravelRay = false;
-$useUpdateChangelogWorkflow = false; //confirm('Use automatic changelog updater workflow?', true);
+$useUpdateChangelogWorkflow = false; // confirm('Use automatic changelog updater workflow?', true);
 
-$isTheme = false; //confirm('Is this a custom theme?');
-$formsOnly = false; //! $isTheme && confirm('Is this for Forms only?');
-$tablesOnly = false; //! ($isTheme || $formsOnly) && confirm('Is this for Tables only?');
+$isTheme = false; // confirm('Is this a custom theme?');
+$formsOnly = false; // ! $isTheme && confirm('Is this for Forms only?');
+$tablesOnly = false; // ! ($isTheme || $formsOnly) && confirm('Is this for Tables only?');
 
 writeln("\r");
 writeln('------');
@@ -80,7 +80,7 @@ writeln("\r");
 writeln('This script will replace the above values in all relevant files in the project directory.');
 writeln("\r");
 
-if (!confirm('Modify files?', true)) {
+if (! confirm('Modify files?', true)) {
     exit(1);
 }
 
@@ -130,7 +130,7 @@ $currentDirectory = $currentDirectory . '\\packages\\' . $ShortPackageName . '-M
 $files = (str_starts_with(strtoupper(PHP_OS), 'WIN') ? replaceForWindows($currentDirectory) : replaceForAllOtherOSes());
 var_dump($ShortPackageName);
 $files = array_filter($files, function ($file) use ($ShortPackageName) {
-    return str_contains($file, "packages\\" . $ShortPackageName . '-Module');
+    return str_contains($file, 'packages\\' . $ShortPackageName . '-Module');
 });
 foreach ($files as $file) {
 
@@ -158,7 +158,7 @@ foreach ($files as $file) {
         str_contains($file, determineSeparator('src/FilamentsecretfieldModuleTheme.php')) => rename($file, determineSeparator('./src/' . $className . 'Theme.php')),
         str_contains($file, determineSeparator('src/FilamentsecretfieldModulePlugin.php')) => rename($file, determineSeparator('./src/' . $className . 'Plugin.php')),
         str_contains($file, determineSeparator('src/Facades/FilamentsecretfieldModule.php')) => rename($file, determineSeparator('./src/Facades/' . $className . '.php')),
-        //str_contains($file, determineSeparator('src/Models/FilamentsecretfieldModule.php')) => rename($file, determineSeparator('./src/Models/' . $modelName . '.php')),
+        // str_contains($file, determineSeparator('src/Models/FilamentsecretfieldModule.php')) => rename($file, determineSeparator('./src/Models/' . $modelName . '.php')),
         str_contains($file, determineSeparator('src/Commands/FilamentsecretfieldModuleCommand.php')) => rename($file, determineSeparator('./src/Commands/' . $className . 'Command.php')),
         str_contains($file, determineSeparator('src/Testing/TestsFilamentsecretfieldModule.php')) => rename($file, determineSeparator('./src/Testing/Tests' . $className . '.php')),
         str_contains($file, determineSeparator('database/migrations/create_nlmn-filamentsecretfield-module_table.php.stub')) => rename($file, determineSeparator('./database/migrations/create_' . titleSnake($packageSlugWithoutPrefix) . '_table.php.stub')),
@@ -170,16 +170,16 @@ foreach ($files as $file) {
     };
 }
 
-if (!$useDependabot) {
+if (! $useDependabot) {
     safeUnlink(__DIR__ . '/.github/dependabot.yml');
     safeUnlink(__DIR__ . '/.github/workflows/dependabot-auto-merge.yml');
 }
 
-if (!$useLaravelRay) {
+if (! $useLaravelRay) {
     removeComposerDeps(['spatie/laravel-ray'], 'require-dev');
 }
 
-if (!$usePhpStan) {
+if (! $usePhpStan) {
     safeUnlink(__DIR__ . '/phpstan.neon.dist');
     safeUnlink(__DIR__ . '/phpstan-baseline.neon');
     safeUnlink(__DIR__ . '/.github/workflows/phpstan.yml');
@@ -194,7 +194,7 @@ if (!$usePhpStan) {
     removeComposerDeps(['analyse'], 'scripts');
 }
 
-if (!$usePint) {
+if (! $usePint) {
     safeUnlink(__DIR__ . '/.github/workflows/fix-php-code-style-issues.yml');
     safeUnlink(__DIR__ . '/pint.json');
 
@@ -205,23 +205,23 @@ if (!$usePint) {
     removeComposerDeps(['format'], 'scripts');
 }
 
-if (!$useUpdateChangelogWorkflow) {
+if (! $useUpdateChangelogWorkflow) {
     safeUnlink(__DIR__ . '/.github/workflows/update-changelog.yml');
 }
 
-//confirm('Execute `composer install`?') && run('composer install');
+// confirm('Execute `composer install`?') && run('composer install');
 
 // delete config script file
-//if (confirm('Let this script delete itself?', true)) {
+// if (confirm('Let this script delete itself?', true)) {
 unlink(__FILE__);
-//}
+// }
 
 function ask(string $question, string $default = ''): string
 {
     $def = $default ? "\e[0;33m ($default)" : '';
     $answer = readline("\e[0;32m" . $question . $def . ": \e[0m");
 
-    if (!$answer) {
+    if (! $answer) {
         return $default;
     }
 
@@ -427,14 +427,16 @@ function writeVariablesToMarkdown(array $FilamentsecretfieldModules, string $fil
 
 function addVariablesToReadme(array $FilamentsecretfieldModules, string $readmePath): void
 {
-    if (!file_exists($readmePath)) {
+    if (! file_exists($readmePath)) {
         echo "README.md not found at $readmePath\n";
+
         return;
     }
 
     $readmeContents = file_get_contents($readmePath);
     if ($readmeContents === false) {
         echo "Failed to read from README.md\n";
+
         return;
     }
 
@@ -447,6 +449,7 @@ function addVariablesToReadme(array $FilamentsecretfieldModules, string $readmeP
 
     if (file_put_contents($readmePath, $readmeContents) === false) {
         echo "Failed to write to README.md\n";
+
         return;
     }
 
