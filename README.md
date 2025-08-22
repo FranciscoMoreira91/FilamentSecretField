@@ -1,4 +1,4 @@
-# This is package filamentsecretfield!
+# Filament Secret Field!
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
@@ -9,7 +9,13 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-Filament is a collection of full-stack components for accelerated Laravel development. They are beautifully designed, intuitive to use, and fully extensible - the perfect starting point for your next Laravel app. Why waste time building the same features over and over again?
+A custom Filament form field that provides a secure input with a toggle visibility button (eye icon). Fully compatible with dark mode, supports placeholders and labels, and styled consistently with native Filament fields.
+
+## Installation
+
+### 1. Install via Composer
+```bash
+composer require fmfrlx/filamentsecretfield
 
 ## Usage
 ```bash
@@ -24,3 +30,7 @@ Filament is a collection of full-stack components for accelerated Laravel develo
 ```bash
 composer test
 ```
+
+## License
+
+The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
