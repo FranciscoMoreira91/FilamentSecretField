@@ -16,6 +16,7 @@ A custom Filament form field that provides a secure input with a toggle visibili
 ### 1. Install via Composer
 ```bash
 composer require fmfrlx/filamentsecretfield
+```
 
 ## Usage
 ```bash
