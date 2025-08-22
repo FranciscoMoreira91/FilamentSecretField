@@ -5,14 +5,9 @@
         "laravel",
         "filamentsecretfield"
     ],
-    "type": "plugin",
-    "license": "Proprietary",
+    "type": "library",
+    "license": "MIT",
     "authors": [
-        {
-            "name": "Francisco Moreira",
-            "email": "moreirafrancisco320@gmail.com",
-            "role": "Developer"
-        },
         {
             "name": "Francisco Moreira",
             "email": "moreirafrancisco320@gmail.com",
